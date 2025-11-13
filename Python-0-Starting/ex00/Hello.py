@@ -1,17 +1,17 @@
 ft_list = ["Hello", "tata!"]
 ft_tuple = ("Hello", "toto!")
 ft_set = {"Hello", "tutu!"}
-ft_dict = {"Hello" : "titi!"}
-#your code here
+ft_dict = {"Hello": "titi!"}
+# your code here
 
-#List
+# List
 # list is mutable
 ft_list[1] = "World"
 # ft_list.pop()
 # ft_list.append("World")
 # ft_list.insert(1, "42Tokyo")
 
-#Tuple
+# Tuple
 # tuple is imutable, tuple -> list -> modify -> tuple
 temp_list = list(ft_tuple)
 temp_list[1] = "Tokyo"
@@ -21,7 +21,7 @@ ft_tuple = tuple(temp_list)
 # add elemnt to tuple
 # ft_tuple += ("42Tokyo",)
 
-#Set
+# Set
 # set is mutable, unique elements, no indexing
 ft_set.remove("tutu!")
 ft_set.add("Shinjuku")
@@ -31,8 +31,7 @@ ft_set.add("Shinjuku")
 # ft_set.difference_update({"tutu!"})
 # ft_set.update({"Shinjuku", "additional Ikebukuro"})
 
-
-#Dictionary
+# Dictionary
 # dictionary is mutable, key-value pairs
 ft_dict["Hello"] = "42Tokyo"
 # ft_dict.update({"Hello": "42Nagoya"})
