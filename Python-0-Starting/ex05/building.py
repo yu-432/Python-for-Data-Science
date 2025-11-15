@@ -1,4 +1,4 @@
-from sys import argv
+from sys import argv, stdin
 
 
 def count_characters(text):
@@ -32,11 +32,15 @@ def print_statistics(stats):
 
 def main(argv):
     """メイン・引数チェック"""
-    if len(argv) != 2:
-        print("Error: Please provide exactly one argument.")
-        return
+    if len(argv) == 1:
+        print("What is the text to count?")
+        string = stdin.readline()
+    elif len(argv) == 2:
+        string = argv[1]
+    else:
+        raise AssertionError("Error: Please provide exactly one argument.")
 
-    print_statistics(count_characters(argv[1]))
+    print_statistics(count_characters(string))
 
 
 if __name__ == "__main__":

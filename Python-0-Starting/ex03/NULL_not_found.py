@@ -3,7 +3,7 @@ def NULL_not_found(object: any) -> int:
         print(f"Nothing: {object} {type(object)}")
         return 0
     elif type(object) is float and object != object:
-        print(f"Garlic: {object} {type(object)}")
+        print(f"Cheese: {object} {type(object)}")
         return 0
     elif type(object) is bool and object is False:
         print(f"Fake: {object} {type(object)}")
