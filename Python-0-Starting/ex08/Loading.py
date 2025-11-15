@@ -11,7 +11,8 @@ def ft_tqdm(lst: range) -> None:
         percent = int(count / length * 100)
         max_width = terminal_width - 40
         filled_length = int(max_width * percent // 100)
-        bar = '██' * (filled_length // 2) + '  ' * ((max_width - filled_length) // 2)
+        bar = '██' * (filled_length // 2) + '  '
+        * ((max_width - filled_length) // 2)
         print(f"{percent:3d}%|{bar}| {count}/{length}\r", end="")
         yield item
     print("")
