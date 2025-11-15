@@ -1,5 +1,5 @@
 def count_in_list(lst: list, item: str) -> int:
     """
-    Counts the occurrences of an item in a list.
+    リストlstの中で、要素itemが出現する回数を返す
     """
     return lst.count(item)

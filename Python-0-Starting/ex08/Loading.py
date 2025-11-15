@@ -2,6 +2,7 @@ from os import get_terminal_size
 
 
 def ft_tqdm(lst: range) -> None:
+    """進捗状況を表示しながらイテレートするジェネレーター"""
     length = len(lst)
     count = 0
     terminal_width = get_terminal_size().columns
