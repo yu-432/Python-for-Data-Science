@@ -20,7 +20,6 @@ def create_morse(string):
 def validate(string):
     """入力値検証"""
     if not string or not string.isalpha():
-        print("AssertionError: the arguments are bad")
         return False
     return True
 
@@ -28,8 +27,7 @@ def validate(string):
 def main(argv):
     """メイン・引数チェック"""
     if len(argv) != 2 or not validate(argv[1]):
-        print("AssertionError: the arguments are bad")
-        return
+        raise AssertionError("the arguments are bad")
 
     print(create_morse(argv[1]))
 
