@@ -1,9 +1,10 @@
 from numpy import array
 
 
-def validate_input(height: list[int | float], weight: list[int | float]) -> bool:
+def validate_input(height: list[int | float], weight: list[int | float])\
+     -> bool:
     """入力の検証"""
-    if len(height) != len(weight) or len(height) == 0  or len(weight) == 0:
+    if len(height) != len(weight) or len(height) == 0 or len(weight) == 0:
         return False
     if not all(isinstance(h, (int, float)) for h in height):
         return False
@@ -11,29 +12,45 @@ def validate_input(height: list[int | float], weight: list[int | float]) -> bool
         return False
     return True
 
-def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int | float]:
+
+def give_bmi(height: list[int | float], weight: list[int | float])\
+     -> list[int | float]:
     """
     BMI計算
     BMI = 体重kg ÷ (身長m)^2
     """
-    if validate_input(height, weight) is False:
-        # print("Error: Invalid input for height or weight.")
-        # return
-        raise ValueError("Invalid input: height and weight must be of the same length and non-empty.")
-    result = []
-    for i in range(len(height)):
-        result.append(weight[i] / (height[i] ** 2))
+    try:
+        if validate_input(height, weight) is False:
+            raise ValueError("height and weight must be same and non-empty.")
 
-    return array(result).tolist()
+        result = []
+        for i in range(len(height)):
+            result.append(weight[i] / (height[i] ** 2))
+
+        return array(result).tolist()
+    except ValueError as e:
+        print("ValueError:", e)
+    except Exception as e:
+        print("Error:", e)
+
+    return []
 
 
 def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     """BMI制限の適用"""
-    if limit <= 0:
-        # print("Error: Limit must be a positive integer.")
-        # return
-        raise ValueError("Limit must be a positive integer.")
-    return [value > limit for value in bmi]
+    try:
+        if limit <= 0:
+            raise ValueError("Limit must be a positive integer.")
+
+        return [value > limit for value in bmi]
+
+    except ValueError as e:
+        print("ValueError:", e)
+    except Exception as e:
+        print("Error:", e)
+
+    return []
+
 
 def main():
     """メイン関数"""
@@ -65,7 +82,7 @@ def main():
     weights = [70, None]
     bmi = give_bmi(height, weights)
 
-    #limitが0以下の場合
+    # limitが0以下の場合
     print("----limitが0以下の場合----")
     height = [1.75, 1.80]
     weight = [70, 80]
@@ -73,6 +90,7 @@ def main():
     print(apply_limit(bmi, 26))
     print(apply_limit(bmi, 0))
     print(apply_limit(bmi, -5))
+
 
 if __name__ == "__main__":
     main()
