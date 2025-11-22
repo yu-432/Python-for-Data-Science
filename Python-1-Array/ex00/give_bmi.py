@@ -5,12 +5,11 @@ def validate_input(height: list[int | float], weight: list[int | float])\
      -> bool:
     """入力の検証"""
     if len(height) != len(weight) or len(height) == 0 or len(weight) == 0:
-        return False
+        raise ValueError("height and weight must be same and non-empty.")
     if not all(isinstance(h, (int, float)) for h in height):
-        return False
+        raise ValueError("All height values must be int or float.")
     if not all(isinstance(w, (int, float)) for w in weight):
-        return False
-    return True
+        raise ValueError("All weight values must be int or float.")
 
 
 def give_bmi(height: list[int | float], weight: list[int | float])\
@@ -20,8 +19,7 @@ def give_bmi(height: list[int | float], weight: list[int | float])\
     BMI = 体重kg ÷ (身長m)^2
     """
     try:
-        if validate_input(height, weight) is False:
-            raise ValueError("height and weight must be same and non-empty.")
+        validate_input(height, weight)
 
         result = []
         for i in range(len(height)):
